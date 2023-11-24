@@ -1,0 +1,10 @@
+<router-outlet>
+    <div><h1>Utenti registati</h1></div>
+  <div style="display: grid; ">
+    <ul style="display: grid" *ngFor="let utente of listaUtenti">
+      <div>{{ "id: " + utente.id }}</div>
+      <div>{{ "username: " + utente.username }}</div>
+      <div>{{ "ruolo: " + utente.role }}</div>
+    </ul>
+  </div>
+</router-outlet>

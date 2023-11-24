@@ -1,0 +1,31 @@
+<div *ngFor="let persona of data">
+    <p> {{persona.nome}} </p>
+</div>
+<button (click)="mandaDati()"> Child to parent </button>
+<p>app.component.html</p>
+
+<p *ngIf="4 < 5; then bloccoIf else bloccoElse"></p>
+<ng-template #bloccoIf> bloccoIf </ng-template>
+<ng-template #bloccoElse> bloccoElse </ng-template>
+
+<li *ngFor="let persona of persone; index as i">
+<div class="cerchio" [ngClass]="{'cerchioOnline': persona.isOnline, 'cerchioOffline': !persona.isOnline} ">{{i}}</div>
+<p>{{persona.nome}}</p>
+</li>
+<app-prova [data]="persone" (mandaDatiEvento)="onRiceviDati($event)"></app-prova>
+<br>
+<input #inputSaluti value="ciao">
+<br>
+<p appHighlight> Paragrafo delle direttive </p>
+<br>
+<h2> Scegli il colore dell'evidenziatore</h2>
+<div>
+    <input type="radio" name="coloreEvidenziatore" (click)="cambiaColoreEvidenziatore('magenta')">Magenta
+    <input type="radio" name="coloreEvidenziatore" (click)="cambiaColoreEvidenziatore('pink')">Rosa
+    <input type="radio" name="coloreEvidenziatore" (click)="cambiaColoreEvidenziatore('orange')">Arancione
+</div>
+<br>
+<p [appHighlight]="coloreEvidenziatore"> Paragrafo che diventa arancione</p>
+<br>
+<p>{{ numero | number : '2.4'}}</p>
+<br>

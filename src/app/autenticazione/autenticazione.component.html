@@ -1,0 +1,100 @@
+<router-outlet>
+  <html>
+    <head></head>
+    <body>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            justify-content: space-evenly;
+          "
+        >
+          <div class="riquadro-login">
+            <div class="logo-login">
+              <img
+                style="height: 180px; border-radius: 45px"
+                src="assets/Logo/HomeChefLogo.png"
+              />
+            </div>
+            <h1
+              style="
+                color: rgb(255, 255, 255);
+                font-size: 50px;
+                margin-top: 15px;
+                margin-bottom: 30px;
+              "
+            >
+              Login
+            </h1>
+            <div class="input-login">
+              <input
+                style="padding-inline-start: 16px"
+                class="input-field"
+                type="email"
+                formControlName="username"
+                placeholder="Username"
+                required="username"
+              />
+              <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                  class="input-field"
+                  style="height: 18px"
+                  type="password"
+                  formControlName="password"
+                  required="password"
+                />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+              </mat-form-field>
+              <p style="color: red; font-weight: 450" *ngIf="erroreLogin"> 
+                Credenziali di accesso errate!
+              </p>
+            </div>
+            <div class="remember-me">
+              <mat-checkbox class="mat-checkbox" formControlName="rememberMe"
+                ><p>Remember me</p></mat-checkbox
+              >
+            </div>
+            <div class="submit-button-login">
+              <button
+                type="submit"
+                class="button"
+                style="margin-bottom: 5px"
+                [disabled]="!loginForm.valid"
+              >
+                Accedi
+              </button>
+              <div
+                style="
+                  border-bottom: solid;
+                  opacity: 0.2;
+                  margin-bottom: 5px;
+                  width: 400px;
+                "
+              ></div>
+              <button class="button-registrazione" (click)="registrazione()">
+                Registrati
+              </button>
+            </div>
+            <div class="opzioni-login">
+              non leggere questa scrittà sennò ti denuncio
+            </div>
+          </div>
+        </div>
+      </form>
+    </body>
+  </html>
+</router-outlet>

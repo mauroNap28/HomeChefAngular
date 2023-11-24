@@ -1,12 +1,13 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-prova',
+  templateUrl: './prova.component.html',
+  styleUrls: ['./prova.component.css']
 })
-export class AppComponent implements AfterViewInit{
-  
+export class ProvaComponent {
+  @Input() data: any
+  @Output() mandaDatiEvento = new EventEmitter<string>()
   title = 'HomeChef';
   coloreEvidenziatore = 'orange'
   numero = 7.333333333333333
@@ -16,10 +17,11 @@ export class AppComponent implements AfterViewInit{
     {nome: 'michelino', isOnline:false}
   ]
 
+  mandaDati(){
+    this.mandaDatiEvento.emit(this.data[0].nome)
+  }
   onRiceviDati(evento: string){
     console.log(evento)
-  }
-  ngAfterViewInit(): void {
   }
   cambiaColoreEvidenziatore(coloreEvidenziatore: string){
     this.coloreEvidenziatore = coloreEvidenziatore
